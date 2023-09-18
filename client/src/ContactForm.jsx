@@ -27,7 +27,6 @@ const ContactForm = ({ setSubmitted, setSpamDetected }) => {
         .then(response => response.text())
         .then(output_classification => {
             console.log(output_classification);
-            // NOTE: Currently broken; must fix. 
             if (output_classification === "spam") {
                 setSpamDetected(true);
             } else if (output_classification === "ham") {
