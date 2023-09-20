@@ -12,6 +12,7 @@ nltk = "*"
 numpy = "*"
 matplotlib = "*"
 jupyter = "*"
+jupyterlab-rise = "*"
 
 [dev-packages]
 
