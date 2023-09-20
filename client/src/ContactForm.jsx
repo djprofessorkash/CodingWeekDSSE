@@ -54,7 +54,7 @@ const ContactForm = ({ setSubmitted, setSpamDetected }) => {
                     <input type="text" placeholder="Your name" name="name" required />
                 </div>
                 <div>
-                    <input type="email" placeholder="Your email" name="email" required />
+                    <input type="number" placeholder="Your phone number" name="sms" required />
                 </div>
                 <div>
                     <textarea placeholder="Your message" name="message" required />

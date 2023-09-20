@@ -2,7 +2,7 @@
 
 In this showcase, we'll demonstrate the steps to architecting a full-stack machine learning classification project from scratch for a basic use case.
 
-Specifically, our use case will entail detecting and filtering spam content in emails (and potentially other text content). 
+Specifically, our use case will entail detecting and filtering spam content in text messages (and potentially other text content). 
 
 ---
 
