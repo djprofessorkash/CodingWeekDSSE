@@ -2,7 +2,8 @@
 # Importing Flask Dependencies
 from flask import Flask, request
 # Importing Natural Language Toolkit for Text Processing
-import nltk; from nltk.stem import SnowballStemmer
+import nltk; nltk.download("punkt")
+from nltk.stem import SnowballStemmer
 # Accessing Custom Service Scripts
 import services
 
