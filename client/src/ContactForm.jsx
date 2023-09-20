@@ -1,44 +1,52 @@
 import React from "react";
 import styled from "styled-components";
 
+// Creation of contact form component with passed submission and spam detection props
 const ContactForm = ({ setSubmitted, setSpamDetected }) => {
-    const FORM_ENDPOINT = "/api/classify"
+    // Initialize API endpoint path
+	const FORM_ENDPOINT = "/api/classify"
 
+    // Create event handler for frontend form submission
     const handleSubmit = (event) => {
+        // Don't refresh page
         event.preventDefault();
     
+        // Track user-submitted text data from form and save to iterable object
         const inputs = event.target.elements;
         const data = {};
-    
         for (let iterator = 0; iterator < inputs.length; iterator++) {
-          if (inputs[iterator].name) {
-            data[inputs[iterator].name] = inputs[iterator].value;
-          }
+        	if (inputs[iterator].name) {
+            	data[inputs[iterator].name] = inputs[iterator].value;
+          	}
         }
 
+		// Pass user text data to saved model binary via fetch (POST) request
         fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data)
+        	method: "POST",
+          	headers: {
+            	Accept: "application/json",
+            	"Content-Type": "application/json",
+          	},
+          	body: JSON.stringify(data)
         })
         .then(response => response.text())
         .then(output_classification => {
-            console.log(output_classification);
+			// Toggle spam detection state boolean from modeling output evaluation
             if (output_classification === "spam") {
                 setSpamDetected(true);
             } else if (output_classification === "ham") {
                 setSpamDetected(false);
             }
+			// Track form submission state as complete
             setSubmitted(true);
         })
+		// Generic error catch case
         .catch((error) => {
-          console.error(error);
+        	console.error(error);
         });
-      }
+    }
 
+	// Contact form rendering
     return (
         <StyledContactForm>
             <form action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST">
@@ -61,7 +69,7 @@ const ContactForm = ({ setSubmitted, setSpamDetected }) => {
 
 export default ContactForm;
 
-// Styles
+// Contact form component styling
 const StyledContactForm = styled.div`
 //   width: 400px;
 
