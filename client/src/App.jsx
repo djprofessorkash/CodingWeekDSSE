@@ -12,6 +12,7 @@ function App() {
 	// Serve overall JSX layout for web app using contact form and response modal
   	return (
     	<div className="App">
+			<h1>SMS Full-Stack ML Classifier</h1>
       		<ContactForm setSubmitted={setSubmitted} setSpamDetected={setSpamDetected}/>
       		{submitted ? <ResponseModal spamDetected={spamDetected} /> : null}
     	</div>
